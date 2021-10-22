@@ -1,23 +1,8 @@
 package c61_旋转链表;
 
+import entity.ListNode;
+
 public class Main {
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 
     // === 1. 快慢指针空间复杂度太高
 
