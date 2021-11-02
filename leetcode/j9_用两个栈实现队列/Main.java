@@ -1,4 +1,4 @@
-package c9_用两个栈实现队列;
+package j9_用两个栈实现队列;
 
 import java.util.Stack;
 
