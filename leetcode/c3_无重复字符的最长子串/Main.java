@@ -4,18 +4,22 @@ import java.util.HashSet;
 
 public class Main {
 
-    public int lengthOfLongestSubstring(String s) {
-        if (s.length() == 0) return 0;
-        int max = 0;
-        HashSet<Character> cs = new HashSet<>();
-        int start = 0;
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (cs.contains(c)) {
-                // FIXME:
-            }
-        }
-        return max;
+  public int lengthOfLongestSubstring(String s) {
+    int max = 0;
+    HashSet<Character> set = new HashSet<>();
+    int slow = 0, quick = 0;
+    while (quick < s.length()) {
+      char c = s.charAt(quick);
+      if (set.contains(c)) {
+        set.remove(s.charAt(slow));
+        slow++;
+      } else {
+        max = Math.max(max, quick - slow + 1);
+        quick++;
+        set.add(c);
+      }
     }
+    return max;
+  }
 
 }
