@@ -25,7 +25,8 @@ public class Main {
   int max = Integer.MIN_VALUE;
 
   public int maxPathSum(TreeNode root) {
-    return maxGain(root);
+    maxGain(root);
+    return max;
   }
 
   private int maxGain(TreeNode node) {
