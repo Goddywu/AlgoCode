@@ -15,4 +15,12 @@ public class ListNode {
         this.val = val;
         this.next = next;
     }
+
+    public static ListNode ofIntArray(int... intArray) {
+        ListNode previous = null;
+        for (int i = intArray.length - 1; i >= 0; i--) {
+            previous = new ListNode(intArray[i], previous);
+        }
+        return previous;
+    }
 }
