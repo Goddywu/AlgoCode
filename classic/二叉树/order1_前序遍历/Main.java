@@ -100,6 +100,30 @@ public class Main {
         return result;
     }
 
+    /**
+      * 遍历
+      */
+    public List<Integer> preorderTraversal4(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.add(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            result.add(node.val);
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
         List<TreeNode> trees = Arrays.asList(
                 TreeNode.ofArray(new Integer[]{11, 21, 22, 31, 32, 33, 34}), // [11, 21, 31, 32, 22, 33, 34]
