@@ -54,6 +54,47 @@ public class Main {
         return result;
     }
 
+    private static class MarkNode {
+        public TreeNode node;
+        public boolean visitLeft;
+
+        public MarkNode(TreeNode node, boolean visitLeft) {
+            this.node = node;
+            this.visitLeft = visitLeft;
+        }
+    }
+
+    /**
+      * 标记是否访问左边
+      */
+    public List<Integer> inorderTraversal4(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+
+        Stack<MarkNode> stack = new Stack<>();
+        stack.add(new MarkNode(root, false));
+
+        while (!stack.isEmpty()) {
+            MarkNode mark = stack.peek();
+
+            if (mark.visitLeft) {
+                stack.pop();
+                result.add(mark.node.val);
+                if (mark.node.right != null) {
+                    stack.add(new MarkNode(mark.node.right, false));
+                }
+            } else {
+                mark.visitLeft = true;
+                if (mark.node.left != null) {
+                    stack.add(new MarkNode(mark.node.left, false));
+                }
+            }
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         List<TreeNode> trees = Arrays.asList(
                 TreeNode.ofArray(new Integer[]{11, 21, 22, 31, 32, 33, 34}), // [31, 21, 32, 11, 33, 22, 34]
