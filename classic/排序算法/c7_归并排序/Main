@@ -21,5 +21,38 @@ public class Main {
         }
         while (i <= mid) arr[k++] = temp[i++];
     }
-  
+
+
+    public static void mergeSort2(int[] nums) {
+        mergeSort(nums, new int[nums.length], 0, nums.length - 1);
+    }
+
+    private static void mergeSort2(int[] nums, int[] tmp, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        int mid = left + (right - left) / 2;
+        mergeSort(nums, tmp, left, mid);
+        mergeSort(nums, tmp, mid + 1, right);
+
+        int i = left;
+        int j = mid + 1;
+        int idx = left;
+        while (i <= mid && j <= right) {
+            if (nums[i] <= nums[j]) {
+                tmp[idx++] = nums[i++];
+            } else {
+                tmp[idx++] = nums[j++];
+            }
+        }
+        while (i <= mid) {
+            tmp[idx++] = nums[i++];
+        }
+        while (j <= right) {
+            tmp[idx++] = nums[j++];
+        }
+        for (i = left; i <= right; i++) {
+            nums[i] = tmp[i];
+        }
+    }
 }
