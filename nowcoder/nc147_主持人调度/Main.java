@@ -31,5 +31,21 @@ public class Main {
         return maxCount;
     }
 
+    /**
+     * 利用堆
+     */
+    public static int minmumNumberOfHost2(int n, int[][] startEnd) {
+        Arrays.sort(startEnd, Comparator.comparingInt(a -> a[0]));
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        int max = 0;
+        for (int[] arr : startEnd) {
+            if (!queue.isEmpty() && arr[0] >= queue.peek()) {
+                queue.poll();
+            }
+            queue.offer(arr[1]);
+            max = Math.max(max, queue.size());
+        }
+        return max;
+    }
 
 }
