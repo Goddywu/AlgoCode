@@ -1,3 +1,7 @@
+/**
+ * 最长公共子序列
+ * https://www.nowcoder.com/practice/6d29638c85bb4ffd80c020fe244baf11
+ */
 public class Main {
   
   public static String LCS(String s1, String s2) {
