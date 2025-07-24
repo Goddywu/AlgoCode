@@ -23,4 +23,18 @@ public class ListNode {
         }
         return previous;
     }
+    
+    public void print() {
+        int idx = 0;
+        ListNode cur = this;
+        while (cur != null) {
+            if (idx != 0) {
+                System.out.print(" ");
+            }
+            System.out.print(cur.val);
+            cur = cur.next;
+            idx++;
+        }
+        System.out.println();
+    }
 }
